@@ -15,28 +15,28 @@ public class CourseController {
 
     @RequestMapping("/topics")
     public List<Course> getAllTopics(){
-        return courseService.getAllTopics();
+        return courseService.getAllCourses();
     }
 
     @RequestMapping("/topics/{id}")
     public Optional<Course> getTopicById(@PathVariable("id") String id)//request mapping ena id eka methena id eka kiyla kiynne path variable ekan
     {
-        return courseService.getTopic(id);
+        return courseService.getCourse(id);
     }
 
     @PostMapping("/topics")
     public String addTopic(@RequestBody Course topic ){
-       return courseService.addTopic(topic);
+       return courseService.addCourse(topic);
     }
 
     @PutMapping("/topics/{id}")
     public String updateTopic(@PathVariable("id") String id, @RequestBody Course topic){
-        return courseService.updateTopic(id,topic);
+        return courseService.updateCourse(id,topic);
     }
 
     @DeleteMapping("/topics/{id}")
     public String deleteTopic(@PathVariable("id") String id){
-        return courseService.deleteTopic(id);
+        return courseService.deleteCourse(id);
     }
 
 }

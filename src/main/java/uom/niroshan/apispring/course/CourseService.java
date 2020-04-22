@@ -19,14 +19,14 @@ public class CourseService {
 //                new Topic("3","Sql","MySql Introduction")
 //        ));
 
-           public List<Course> getAllTopics(){
+           public List<Course> getAllCourses(){
 
                List<Course> topics=new ArrayList<>();
                courseRepository.findAll().forEach(topics::add);//find karala okkoma ekakata dagannwaaaa
                return topics;
            }
 
-           public Optional<Course> getTopic(String id){
+           public Optional<Course> getCourse(String id){
 
 
            return courseRepository.findById(id);
@@ -34,12 +34,12 @@ public class CourseService {
 //               return topics.stream().filter(t->t.getId().equals(id)).findFirst().get();
            }
 
-    public String addTopic(Course topic) {
+    public String addCourse(Course topic) {
         courseRepository.save(topic);
                return "Topic created";
     }
 
-    public String updateTopic(String id, Course topic) {
+    public String updateCourse(String id, Course topic) {
 
               /* for(int i=0;i<topics.size();i++){
                    Topic t=topics.get(i);
@@ -53,7 +53,7 @@ public class CourseService {
 
     }
 
-    public String deleteTopic(String id) {
+    public String deleteCourse(String id) {
             /*   for(int i=0;i<topics.size();i++){
                    Topic t= topics.get(i);
                    if(t.getId().equals(id))
