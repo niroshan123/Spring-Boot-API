@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class TopicService {
+public class CourseService {
 
     @Autowired
-    private TopicRepository topicRepository;
+    private CourseRepository courseRepository;
 
 //          private List<Topic> topics= new ArrayList<> (Arrays.asList(
 //                new Topic("1","Spring","Spring-Boot Introduction"),
@@ -22,20 +22,20 @@ public class TopicService {
            public List<Course> getAllTopics(){
 
                List<Course> topics=new ArrayList<>();
-               topicRepository.findAll().forEach(topics::add);//find karala okkoma ekakata dagannwaaaa
+               courseRepository.findAll().forEach(topics::add);//find karala okkoma ekakata dagannwaaaa
                return topics;
            }
 
            public Optional<Course> getTopic(String id){
 
 
-           return topicRepository.findById(id);
+           return courseRepository.findById(id);
 
 //               return topics.stream().filter(t->t.getId().equals(id)).findFirst().get();
            }
 
     public String addTopic(Course topic) {
-               topicRepository.save(topic);
+        courseRepository.save(topic);
                return "Topic created";
     }
 
@@ -48,7 +48,7 @@ public class TopicService {
                            }
                }*/
 
-        topicRepository.save(topic);
+        courseRepository.save(topic);
             return "Updated";
 
     }
@@ -61,7 +61,7 @@ public class TopicService {
                }
          topics.removeIf(t->t.getId().equals(id));*/
 
-        topicRepository.deleteById(id);
+        courseRepository.deleteById(id);
 
         return "Deleted";
     }
