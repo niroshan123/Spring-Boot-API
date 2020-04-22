@@ -1,10 +1,9 @@
-package uom.niroshan.apispring.topics;
+package uom.niroshan.apispring.course;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,7 +11,7 @@ import java.util.Optional;
 public class TopicService {
 
     @Autowired
-    private  TopicRepository topicRepository;
+    private TopicRepository topicRepository;
 
 //          private List<Topic> topics= new ArrayList<> (Arrays.asList(
 //                new Topic("1","Spring","Spring-Boot Introduction"),
@@ -20,14 +19,14 @@ public class TopicService {
 //                new Topic("3","Sql","MySql Introduction")
 //        ));
 
-           public List<Topic> getAllTopics(){
+           public List<Course> getAllTopics(){
 
-               List<Topic> topics=new ArrayList<>();
+               List<Course> topics=new ArrayList<>();
                topicRepository.findAll().forEach(topics::add);//find karala okkoma ekakata dagannwaaaa
                return topics;
            }
 
-           public Optional<Topic> getTopic(String id){
+           public Optional<Course> getTopic(String id){
 
 
            return topicRepository.findById(id);
@@ -35,12 +34,12 @@ public class TopicService {
 //               return topics.stream().filter(t->t.getId().equals(id)).findFirst().get();
            }
 
-    public String addTopic(Topic topic) {
+    public String addTopic(Course topic) {
                topicRepository.save(topic);
                return "Topic created";
     }
 
-    public String updateTopic(String id, Topic topic) {
+    public String updateTopic(String id, Course topic) {
 
               /* for(int i=0;i<topics.size();i++){
                    Topic t=topics.get(i);
