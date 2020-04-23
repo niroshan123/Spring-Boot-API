@@ -34,7 +34,7 @@ public class CourseService {
 
     public String addCourse(Course course) {
         courseRepository.save(course);
-               return "Topic created";
+               return "Course created";
     }
 
     public String updateCourse(Course course) {
