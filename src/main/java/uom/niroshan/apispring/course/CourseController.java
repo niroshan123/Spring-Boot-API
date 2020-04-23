@@ -3,6 +3,7 @@ package uom.niroshan.apispring.course;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import uom.niroshan.apispring.topics.Topic;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,28 +15,32 @@ public class CourseController {
     private CourseService courseService;
 
     @RequestMapping("/topics/{id}/courses")
-    public List<Course> getAllTopics(){
-        return courseService.getAllCourses();
+    public List<Course> getAllCourses(@PathVariable String id){
+        return courseService.getAllCourses(id);
     }
 
-    @RequestMapping("/topics/{id}")
-    public Optional<Course> getTopicById(@PathVariable("id") String id)//request mapping ena id eka methena id eka kiyla kiynne path variable ekan
+    @RequestMapping("/topics/{topicId}/courses/{id}")
+    public Optional<Course> getCourse(@PathVariable String id)//request mapping ena id eka methena id eka kiyla kiynne path variable ekan
     {
         return courseService.getCourse(id);
     }
 
-    @PostMapping("/topics")
-    public String addTopic(@RequestBody Course topic ){
-       return courseService.addCourse(topic);
+    @PostMapping("/topics/{topicId}/courses")
+    public String addCourse(@RequestBody Course course,@PathVariable String topicId ){
+        course.setTopic(new Topic(topicId,"",""));
+        return courseService.addCourse(course);
+
     }
 
-    @PutMapping("/topics/{id}")
-    public String updateTopic(@PathVariable("id") String id, @RequestBody Course topic){
-        return courseService.updateCourse(id,topic);
+    @PutMapping("/topics/{topicId}/courses/{id}")
+    public String updateCourse( @RequestBody Course course,@PathVariable String topicId,@PathVariable String id){
+        course.setTopic(new Topic(topicId,"",""));
+        return courseService.updateCourse(course);
     }
 
-    @DeleteMapping("/topics/{id}")
-    public String deleteTopic(@PathVariable("id") String id){
+    @DeleteMapping("topics/{topicId}/courses/{id}")
+    public String deleteCourse(@PathVariable String id)
+    {
         return courseService.deleteCourse(id);
     }
 
